@@ -1,10 +1,21 @@
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\domain\services\CountryService.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\infrastructure\exceptions\CountryNotFoundException.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\application\servicesImpl\CountryServiceImpl.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\domain\dtos\CreateCountryDto.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\domain\dtos\CountryDto.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\domain\entities\Country.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\infrastructure\exceptions\ExistentCountryException.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\infrastructure\controllers\CountryController.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\infrastructure\repositories\CountryRepository.java
-C:\Users\nikol\Documents\Dev\Globant\DOJO\TestJava\src\main\java\com\exogames\countryService\application\CountryServiceApplication.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\controllers\CountryController.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\application\TournamentApplication.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\repositories\SportRepository.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\dtos\UpdateSportDto.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\dtos\CountryDto.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\dtos\SportDto.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\exceptions\ExistentSportException.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\repositories\CountryRepository.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\dtos\UpdateCountryDto.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\exceptions\CountryNotFoundException.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\exceptions\SportNotFoundException.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\services\CountryService.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\services\SportService.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\entities\Country.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\controllers\SportController.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\dtos\CreateCountryDto.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\dtos\CreateSportDto.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\domain\entities\Sport.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\infrastructure\exceptions\ExistentCountryException.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\application\servicesImpl\SportServiceImpl.java
+C:\Users\carolina.heredia\Desktop\Exogames\Tournament Service\ExoGames_POD-D_BE_JAVA_Tournament\src\main\java\com\exogames\tournament\application\servicesImpl\CountryServiceImpl.java
