@@ -42,6 +42,7 @@ public class CountryServiceImpl implements CountryService {
         Country foundCountry = repository.findByName(newCountry.getName());
 
         return new CountryDto(
+                foundCountry.getId(),
                 foundCountry.getName(),
                 foundCountry.getLegalAge(),
                 foundCountry.getCreatedDate(),
@@ -56,6 +57,7 @@ public class CountryServiceImpl implements CountryService {
 
         for (Country country:countryList){
             countryDtoList.add(new CountryDto(
+                    country.getId(),
                     country.getName(),
                     country.getLegalAge(),
                     country.getCreatedDate(),
@@ -74,6 +76,7 @@ public class CountryServiceImpl implements CountryService {
 
         for (Country country:countryList){
             countryDtoList.add(new CountryDto(
+                    country.getId(),
                     country.getName(),
                     country.getLegalAge(),
                     country.getCreatedDate(),
@@ -92,6 +95,7 @@ public class CountryServiceImpl implements CountryService {
         Optional<Country> optionalCountry = repository.findById(id);
         Country foundCountry = optionalCountry.get();
         return new CountryDto(
+                foundCountry.getId(),
                 foundCountry.getName(),
                 foundCountry.getLegalAge(),
                 foundCountry.getCreatedDate(),
@@ -117,6 +121,7 @@ public class CountryServiceImpl implements CountryService {
         Country updatedCountry = optionalUpdatedCountry.get();
 
         return new CountryDto(
+                updatedCountry.getId(),
                 updatedCountry.getName(),
                 updatedCountry.getLegalAge(),
                 updatedCountry.getCreatedDate(),
@@ -138,6 +143,7 @@ public class CountryServiceImpl implements CountryService {
         Country updatedCountry = optionalUpdatedCountry.get();
 
         return new CountryDto(
+                updatedCountry.getId(),
                 updatedCountry.getName(),
                 updatedCountry.getLegalAge(),
                 updatedCountry.getCreatedDate(),
@@ -159,6 +165,7 @@ public class CountryServiceImpl implements CountryService {
         Country updatedCountry = optionalUpdatedCountry.get();
 
         return new CountryDto(
+                updatedCountry.getId(),
                 updatedCountry.getName(),
                 updatedCountry.getLegalAge(),
                 updatedCountry.getCreatedDate(),
