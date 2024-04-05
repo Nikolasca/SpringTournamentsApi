@@ -2,6 +2,7 @@ package com.exogames.tournament.application.servicesImpl;
 
 import com.exogames.tournament.domain.dtos.CountryDto;
 import com.exogames.tournament.domain.dtos.CreateCountryDto;
+import com.exogames.tournament.domain.dtos.UpdateCountryDto;
 import com.exogames.tournament.domain.entities.Country;
 import com.exogames.tournament.domain.services.CountryService;
 import com.exogames.tournament.infrastructure.exceptions.CountryNotFoundException;
@@ -41,47 +42,47 @@ public class CountryServiceImpl implements CountryService {
         Country foundCountry = repository.findByName(newCountry.getName());
 
         return new CountryDto(
-                foundCountry.getId(),
                 foundCountry.getName(),
                 foundCountry.getLegalAge(),
                 foundCountry.getCreatedDate(),
-                foundCountry.getLastModifiedDate()
+                foundCountry.getLastModifiedDate(),
+                foundCountry.isActive()
         );
     }
     public List<CountryDto> getAllCountries (){
 
         List<Country> countryList = repository.findAll();
-        List<CountryDto> countries = new ArrayList<>();
+        List<CountryDto> countryDtoList = new ArrayList<>();
 
         for (Country country:countryList){
-            countries.add(new CountryDto(
-                    country.getId(),
+            countryDtoList.add(new CountryDto(
                     country.getName(),
                     country.getLegalAge(),
                     country.getCreatedDate(),
-                    country.getLastModifiedDate()
+                    country.getLastModifiedDate(),
+                    country.isActive()
             ));
         }
 
-        return countries;
+        return countryDtoList;
     }
 
     public List<CountryDto> getAllActiveCountries (){
 
         List<Country> countryList = repository.findByActiveTrue();
-        List<CountryDto> countries = new ArrayList<>();
+        List<CountryDto> countryDtoList = new ArrayList<>();
 
         for (Country country:countryList){
-            countries.add(new CountryDto(
-                    country.getId(),
+            countryDtoList.add(new CountryDto(
                     country.getName(),
                     country.getLegalAge(),
                     country.getCreatedDate(),
-                    country.getLastModifiedDate()
+                    country.getLastModifiedDate(),
+                    country.isActive()
             ));
         }
 
-        return countries;
+        return countryDtoList;
     }
 
     public CountryDto getCountryById (String id) {
@@ -91,42 +92,40 @@ public class CountryServiceImpl implements CountryService {
         Optional<Country> optionalCountry = repository.findById(id);
         Country foundCountry = optionalCountry.get();
         return new CountryDto(
-                foundCountry.getId(),
                 foundCountry.getName(),
                 foundCountry.getLegalAge(),
                 foundCountry.getCreatedDate(),
-                foundCountry.getLastModifiedDate()
+                foundCountry.getLastModifiedDate(),
+                foundCountry.isActive()
         );
     }
 
-    public CountryDto updateCountry (CountryDto countryDto){
+    public CountryDto updateCountry (UpdateCountryDto updateCountryDto){
 
-        validateId(countryDto.getId());
-        validateData(countryDto.getName(), countryDto.getLegalAge());
+        validateId(updateCountryDto.getId());
+        validateData(updateCountryDto.getName(), updateCountryDto.getLegalAge());
 
-        Optional<Country> optionalCountry = repository.findById(countryDto.getId());
-
+        Optional<Country> optionalCountry = repository.findById(updateCountryDto.getId());
         Country foundCountry = optionalCountry.get();
 
-        foundCountry.setName(countryDto.getName());
-        foundCountry.setLegalAge(countryDto.getLegalAge());
+        foundCountry.setName(updateCountryDto.getName());
+        foundCountry.setLegalAge(updateCountryDto.getLegalAge());
 
         repository.save(foundCountry);
 
-        Optional<Country> optionalUpdatedCountry = repository.findById(countryDto.getId());
+        Optional<Country> optionalUpdatedCountry = repository.findById(updateCountryDto.getId());
         Country updatedCountry = optionalUpdatedCountry.get();
 
-
         return new CountryDto(
-                updatedCountry.getId(),
                 updatedCountry.getName(),
                 updatedCountry.getLegalAge(),
                 updatedCountry.getCreatedDate(),
-                updatedCountry.getLastModifiedDate()
+                updatedCountry.getLastModifiedDate(),
+                updatedCountry.isActive()
         );
     }
 
-    public void deactivateCountry (String id){
+    public CountryDto deactivateCountry (String id){
         validateId(id);
 
         Optional<Country> optionalCountry = repository.findById(id);
@@ -134,6 +133,38 @@ public class CountryServiceImpl implements CountryService {
         foundCountry.setActive(false);
 
         repository.save(foundCountry);
+
+        Optional<Country> optionalUpdatedCountry = repository.findById(id);
+        Country updatedCountry = optionalUpdatedCountry.get();
+
+        return new CountryDto(
+                updatedCountry.getName(),
+                updatedCountry.getLegalAge(),
+                updatedCountry.getCreatedDate(),
+                updatedCountry.getLastModifiedDate(),
+                updatedCountry.isActive()
+        );
+    }
+
+    public CountryDto activateCountry (String id){
+        validateId(id);
+
+        Optional<Country> optionalCountry = repository.findById(id);
+        Country foundCountry = optionalCountry.get();
+        foundCountry.setActive(true);
+
+        repository.save(foundCountry);
+
+        Optional<Country> optionalUpdatedCountry = repository.findById(id);
+        Country updatedCountry = optionalUpdatedCountry.get();
+
+        return new CountryDto(
+                updatedCountry.getName(),
+                updatedCountry.getLegalAge(),
+                updatedCountry.getCreatedDate(),
+                updatedCountry.getLastModifiedDate(),
+                updatedCountry.isActive()
+        );
     }
 
     public void deleteCountry (String id){

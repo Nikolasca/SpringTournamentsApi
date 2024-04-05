@@ -3,6 +3,9 @@ package com.exogames.tournament.infrastructure.controllers;
 import com.exogames.tournament.application.servicesImpl.CountryServiceImpl;
 import com.exogames.tournament.domain.dtos.CountryDto;
 import com.exogames.tournament.domain.dtos.CreateCountryDto;
+import com.exogames.tournament.domain.dtos.UpdateCountryDto;
+import com.exogames.tournament.infrastructure.exceptions.CountryNotFoundException;
+import com.exogames.tournament.infrastructure.exceptions.ExistentCountryException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,46 +22,79 @@ public class CountryController {
         this.service = service;
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<CountryDto>> getAllCountries(){
+    // GET ACTIVE COUNTRIES
+    /*    @GetMapping("/active")
+    public ResponseEntity<List<CountryDto>> getAllActiveCountries(){
+        List<CountryDto> activeCountries = service.getAllActiveCountries();
+        return new ResponseEntity<>(activeCountries, HttpStatus.OK);
+    }*/
 
+    @GetMapping("") // GET ALL COUNTRIES
+    public ResponseEntity<List<CountryDto>> getAllCountries(){
         List<CountryDto> countries = service.getAllCountries();
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
-    @GetMapping("/active")
-    public ResponseEntity<List<CountryDto>> getAllActiveCountries(){
-        List<CountryDto> activeCountries = service.getAllActiveCountries();
-        return new ResponseEntity<>(activeCountries, HttpStatus.OK);
+    @GetMapping("/{id}") // GET COUNTRY
+    public ResponseEntity<?> getCountry(@PathVariable String id){
+        try{
+            CountryDto country = service.getCountryById(id);
+            return new ResponseEntity<>(country, HttpStatus.OK);
+        }catch (CountryNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CountryDto> getCountry(@PathVariable String id){
-        CountryDto country = service.getCountryById(id);
-        return new ResponseEntity<>(country, HttpStatus.OK);
+    @PostMapping("") // CREATE NEW COUNTRY
+    public ResponseEntity<?> createCountry(@RequestBody CreateCountryDto createCountryDto){
+        try {
+            CountryDto createdCountry = service.createCountry(createCountryDto);
+            return new ResponseEntity<>(createdCountry, HttpStatus.CREATED);
+        }catch (ExistentCountryException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }catch (CountryNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+
     }
 
-    @PostMapping("/new")
-    public ResponseEntity<CountryDto> createCountry(@RequestBody CreateCountryDto createCountryDto){
-        CountryDto createdCountry = service.createCountry(createCountryDto);
-        return new ResponseEntity<>(createdCountry, HttpStatus.CREATED);
+    @PutMapping("") // UPDATE COUNTRY
+    public ResponseEntity<?> updateCountry(@RequestBody UpdateCountryDto updateCountryDto){
+        try {
+            CountryDto udpatedCountry = service.updateCountry(updateCountryDto);
+            return new ResponseEntity<>(udpatedCountry, HttpStatus.OK);
+        }catch (CountryNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<CountryDto> updateCountry(@RequestBody CountryDto countryDto){
-        CountryDto udpatedCountry = service.updateCountry(countryDto);
-        return new ResponseEntity<>(udpatedCountry, HttpStatus.OK);
+    @PutMapping("/deactivate") // DEACTIVATE COUNTRY
+    public ResponseEntity<?> deactivateCountry(@RequestParam String id){
+        try{
+            CountryDto udpatedCountry = service.deactivateCountry(id);
+            return new ResponseEntity<>(udpatedCountry, HttpStatus.OK);
+        }catch (CountryNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> deactivateCountry(@PathVariable String id){
-        service.deactivateCountry(id);
-        return ResponseEntity.ok().build();
+    @PutMapping("/activate") // ACTIVATE COUNTRY
+    public ResponseEntity<?> activateCountry(@RequestParam String id){
+        try{
+            CountryDto udpatedCountry = service.activateCountry(id);
+            return new ResponseEntity<>(udpatedCountry, HttpStatus.OK);
+        }catch (CountryNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCountry(@PathVariable String id){
-        service.deleteCountry(id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/{id}") // DELETE COUNTRY
+    public ResponseEntity<?> deleteCountry(@PathVariable String id){
+        try{
+            service.deleteCountry(id);
+            return ResponseEntity.ok().build();
+        }catch (CountryNotFoundException e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }

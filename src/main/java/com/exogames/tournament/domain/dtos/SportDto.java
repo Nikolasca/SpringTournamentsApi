@@ -5,16 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CountryDto {
+public class SportDto {
 
     private String name;
-    private int legalAge;
+    private byte[] icon;
     private Date createdDate;
     private Date lasModifiedDate;
     private boolean active;
-
 }
