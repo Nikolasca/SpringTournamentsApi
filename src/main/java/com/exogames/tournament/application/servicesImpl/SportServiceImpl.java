@@ -44,6 +44,7 @@ public class SportServiceImpl implements SportService {
         Sport foundSport = repository.findByName(newSport.getName());
 
         return new SportDto(
+                foundSport.getId(),
                 foundSport.getName(),
                 foundSport.getIcon(),
                 foundSport.getCreatedDate(),
@@ -59,6 +60,7 @@ public class SportServiceImpl implements SportService {
 
         for (Sport sport: sportList){
             sportDtoList.add(new SportDto(
+                    sport.getId(),
                     sport.getName(),
                     sport.getIcon(),
                     sport.getCreatedDate(),
@@ -76,6 +78,7 @@ public class SportServiceImpl implements SportService {
 
         for (Sport sport: sportList){
             sportDtoList.add(new SportDto(
+                    sport.getId(),
                     sport.getName(),
                     sport.getIcon(),
                     sport.getCreatedDate(),
@@ -94,6 +97,7 @@ public class SportServiceImpl implements SportService {
         Sport foundSport = optionalSport.get();
 
         return new SportDto(
+                foundSport.getId(),
                 foundSport.getName(),
                 foundSport.getIcon(),
                 foundSport.getCreatedDate(),
@@ -119,6 +123,7 @@ public class SportServiceImpl implements SportService {
         Sport updatedSport = optionalUpdatedSport.get();
 
         return new SportDto(
+                updatedSport.getId(),
                 updatedSport.getName(),
                 updatedSport.getIcon(),
                 updatedSport.getCreatedDate(),
@@ -140,6 +145,7 @@ public class SportServiceImpl implements SportService {
         Sport updatedSport = optionalUpdatedSport.get();
 
         return new SportDto(
+                updatedSport.getId(),
                 updatedSport.getName(),
                 updatedSport.getIcon(),
                 updatedSport.getCreatedDate(),
@@ -161,6 +167,7 @@ public class SportServiceImpl implements SportService {
         Sport updatedSport = optionalUpdatedSport.get();
 
         return new SportDto(
+                updatedSport.getId(),
                 updatedSport.getName(),
                 updatedSport.getIcon(),
                 updatedSport.getCreatedDate(),

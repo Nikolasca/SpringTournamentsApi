@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 public class CountryDto {
 
+    private String id;
     private String name;
     private int legalAge;
     private Date createdDate;

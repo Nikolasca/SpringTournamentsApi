@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 public class SportDto {
 
+    private String id;
     private String name;
     private byte[] icon;
     private Date createdDate;
