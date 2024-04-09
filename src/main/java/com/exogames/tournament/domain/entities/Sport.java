@@ -2,6 +2,7 @@ package com.exogames.tournament.domain.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.Binary;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -21,7 +22,7 @@ public class Sport {
     @Indexed(unique = true)
     private String name;
 
-    private byte[] icon;
+    private Binary icon;
 
     @CreatedDate
     private Date createdDate;
